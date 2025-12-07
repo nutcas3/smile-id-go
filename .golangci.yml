@@ -1,0 +1,10 @@
+version: "1.57"
+
+linters:
+  enable:
+    - thelper
+    - gofumpt
+    - tparallel
+    - unconvert
+    - unparam
+    - wastedassign
