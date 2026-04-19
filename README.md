@@ -18,8 +18,12 @@ go get github.com/nutcas3/smileid-go
 First, import the package from the root:
 ```go
 import (
+    "context"
     "fmt"
+    "log"
     "github.com/nutcas3/smileid-go"
+    "github.com/nutcas3/smileid-go/internal/identity"
+    "github.com/nutcas3/smileid-go/internal/auth"
 )
 ```
 
@@ -29,7 +33,7 @@ ctx := context.Background()
 client := smileid.NewClient(smileid.Config{
     APIKey:    "your-api-key",
     PartnerID: "your-partner-id",
-    Env:       smileid.Sandbox,
+    Env:       "sandbox",
 })
 kycReq := smileid.KYCRequest{
     CountryCode: "NG",
@@ -48,7 +52,7 @@ fmt.Println(kycResp)
 
 ### Identity Verification
 ```go
-idReq := smileid.IdentityVerificationRequest{
+idReq := identity.VerificationRequest{
     CountryCode: "GH",
     IDType:      "PASSPORT",
     IDNumber:    "A1234567",
@@ -62,7 +66,7 @@ fmt.Println(idResp)
 
 ### User Authentication
 ```go
-authReq := smileid.AuthRequest{
+authReq := auth.AuthRequest{
     UserID:   "user-123",
     Event:    "login",
     DeviceID: "device-abc",
