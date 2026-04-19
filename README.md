@@ -19,9 +19,13 @@ First, import the package from the root:
 ```go
 import (
     "context"
+    "context"
     "fmt"
     "log"
+    "log"
     "github.com/nutcas3/smileid-go"
+    "github.com/nutcas3/smileid-go/internal/identity"
+    "github.com/nutcas3/smileid-go/internal/auth"
 )
 ```
 
@@ -31,6 +35,7 @@ ctx := context.Background()
 client := smileid.NewClient(smileid.Config{
     APIKey:    "your-api-key",
     PartnerID: "your-partner-id",
+    Env:       "sandbox",
     Env:       "sandbox",
 })
 kycReq := smileid.KYCRequest{
@@ -64,7 +69,7 @@ fmt.Println(idResp)
 
 ### User Authentication
 ```go
-authReq := smileid.AuthRequest{
+authReq := auth.AuthRequest{
     UserID:   "user-123",
     Event:    "login",
     DeviceID: "device-abc",
