@@ -22,8 +22,6 @@ import (
     "fmt"
     "log"
     "github.com/nutcas3/smileid-go"
-    "github.com/nutcas3/smileid-go/internal/identity"
-    "github.com/nutcas3/smileid-go/internal/auth"
 )
 ```
 
@@ -52,7 +50,7 @@ fmt.Println(kycResp)
 
 ### Identity Verification
 ```go
-idReq := identity.VerificationRequest{
+idReq := smileid.VerificationRequest{
     CountryCode: "GH",
     IDType:      "PASSPORT",
     IDNumber:    "A1234567",
@@ -66,7 +64,7 @@ fmt.Println(idResp)
 
 ### User Authentication
 ```go
-authReq := auth.AuthRequest{
+authReq := smileid.AuthRequest{
     UserID:   "user-123",
     Event:    "login",
     DeviceID: "device-abc",
